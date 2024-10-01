@@ -40,5 +40,18 @@ class TestNewContact:
         self.ANCT.scroll_down()
         self.ANCT.enter_referred_by("Friend")
         self.ANCT.enter_source()
+        self.ANCT.toggle_do_not_call(state=True)
+        self.ANCT.enter_birthday_day("20")
+        self.ANCT.enter_birthday_month()
+        self.ANCT.enter_birthday_year("1998")
+        self.ANCT.enter_identifier("QA Engineer")
+        self.ANCT.upload_image("C:/Users/gaurav/Downloads/indian_flag.png")
+        self.ANCT.save_profile()
+        time.sleep(5)
+        self.ANCT.verify_contact_created()
+
+
+
+
 
 

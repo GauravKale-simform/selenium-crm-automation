@@ -123,6 +123,10 @@ class AddNewContact:
     Image_upload_xpath = (By.XPATH,"//input[@name='image']")
     file_path = "C:/Users/gaurav/Downloads/indian_flag.png"
 
+    Save_xpath = (By.XPATH,"//button[@class='ui linkedin button']")
+
+    Star_xpath = (By.XPATH,'//*[@id="dashboard-toolbar"]/div[2]/div/div[1]')
+
     def __init__(self,driver):
         self.driver = driver
 
@@ -245,11 +249,54 @@ class AddNewContact:
         self.driver.find_element(*AddNewContact.Source_Website_xpath).click()
 
     def toggle_do_not_call(self, state=True):
-        toggle_button = self.driver.find_element(*AddNewContact.Do_not_Call_Toggle_button)
-        is_toggled_on = "checked" in toggle_button.find_element(By.XPATH, "../input").get_attribute("class")
-        if (state and not is_toggled_on) or (not state and is_toggled_on):
-            toggle_button.click()
-        WebDriverWait(self.driver, 10).until(lambda driver: "checked" in toggle_button.find_element(By.XPATH, "../input").get_attribute("class") == state)
+        toggle_button_call = self.driver.find_element(*AddNewContact.Do_not_Call_Toggle_button)
+        is_toggled_on = toggle_button_call.is_selected()
+        if is_toggled_on != state:
+            toggle_button_call.click()
+
+    def toggle_do_not_text(self, state=True):
+        toggle_button_text = self.driver.find_element(*AddNewContact.Do_not_Text_Toggle_button)
+        is_toggled_on = toggle_button_text.is_selected()
+        if is_toggled_on != state:
+            toggle_button_text.click()
+
+    def toggle_do_not_email(self, state=True):
+        toggle_button_email = self.driver.find_element(*AddNewContact.Do_not_Email_Toggle_button)
+        is_toggled_on = toggle_button_email.is_selected()
+        if is_toggled_on != state:
+            toggle_button_email.click()
+
+    def enter_birthday_day(self,day):
+        self.driver.find_element(*AddNewContact.Birthday_day_xpath).send_keys(day)
+
+    def enter_birthday_month(self):
+        self.driver.find_element(*AddNewContact.Birthday_month_xpath).click()
+        self.driver.find_element(*AddNewContact.Jul_xpath).click()
+
+    def enter_birthday_year(self,year):
+        self.driver.find_element(*AddNewContact.Birthday_year_xpath).send_keys(year)
+
+    def enter_identifier(self,idt):
+        self.driver.find_element(*AddNewContact.Identifier_xpath).send_keys(idt)
+
+    def upload_image(self,file_path):
+        wait = WebDriverWait(self.driver, 10)
+        image_upload = wait.until(EC.presence_of_element_located(AddNewContact.Image_upload_xpath))
+        image_upload.send_keys(file_path)
+
+    def save_profile(self):
+        self.driver.find_element(*AddNewContact.Save_xpath).click()
+        WebDriverWait(self.driver, 10)
+
+    def verify_contact_created(self):
+        wait = WebDriverWait(self.driver, 10)
+        try:
+            wait.until(EC.presence_of_element_located((AddNewContact.Star_xpath)))
+            print("Successfully created a new contact.")
+        except:
+            print("Failed to create a new contact.")
+            assert False
+
 
     def scroll_down(self):
         self.driver.execute_script("window.scrollBy(0, 100);")

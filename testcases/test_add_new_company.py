@@ -41,7 +41,7 @@ class TestNewCompany:
         self.ANC.enter_identifier("NP-2024-001")
         self.ANC.upload_image("C:/Users/gaurav/Downloads/indian_flag.png")
         self.ANC.save_profile()
-        time.sleep(20)
+        time.sleep(5)
         self.ANC.verify_company_created()
 
 

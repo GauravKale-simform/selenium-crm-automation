@@ -44,7 +44,6 @@ class AddNewCompany:
     Tag_India_xpath = (By.XPATH,"//span[normalize-space()='India']")
     Tag_Automation_xpath = (By.XPATH,"//span[normalize-space()='Automation']")
 
-
     Description_xpath = (By.XPATH,"//textarea[@name='description']")
 
     Social_Channel_xpath = (By.XPATH,"//div[@name='channel_type']")
