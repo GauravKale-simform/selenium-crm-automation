@@ -38,8 +38,8 @@ class AddNewCompany:
     Email_xpath = (By.XPATH,"//input[@placeholder='Email address']")
     Type_of_Email_xpath = (By.XPATH,"//input[@placeholder='Personal email, Business, Alt...']") #Personal,business
 
-    Tags_xpath = (By.XPATH,"//div[@class='ui active visible fluid multiple search selection dropdown']")
-    Tag_Technology_xpath = (By.XPATH,"//span[normalize-space()='technology']")
+    Tags_xpath = (By.XPATH,"//div[@class='ui fluid multiple search selection dropdown']//input[@type='text']")
+    Tag_Technology_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='technology']")
     Tag_Software_development_xpath = (By.XPATH,"//span[normalize-space()='Software Development']")
     Tag_India_xpath = (By.XPATH,"//span[normalize-space()='India']")
     Tag_Automation_xpath = (By.XPATH,"//span[normalize-space()='Automation']")
@@ -157,14 +157,8 @@ class AddNewCompany:
 
     def enter_tag(self, tag):
         self.driver.find_element(*AddNewCompany.Tags_xpath).send_keys(tag)
-        # tag_input = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(AddNewCompany.Tags_xpath))
-        # tag_input.send_keys(tag)
         tag_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewCompany.Tag_Technology_xpath))
         tag_option.click()
-
-    # def enter_tag(self,tag):
-    #     self.driver.find_element(*AddNewCompany.Tags_xpath).send_keys(tag)
-    #     self.driver.find_element(*AddNewCompany.Tag_Technology_xpath).click()
 
     def enter_description(self,desc):
         self.driver.find_element(*AddNewCompany.Description_xpath).send_keys(desc)
@@ -219,7 +213,6 @@ class AddNewCompany:
     def upload_image(self,file_path):
         wait = WebDriverWait(self.driver, 10)
         image_upload = wait.until(EC.presence_of_element_located(AddNewCompany.Image_upload_xpath))
-        #image_upload = self.driver.find_element(*AddNewCompany.Image_upload_xpath)
         image_upload.send_keys(file_path)
 
     def save_profile(self):

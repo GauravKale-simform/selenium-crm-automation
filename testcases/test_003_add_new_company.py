@@ -18,13 +18,13 @@ class TestNewCompany:
         self.ANC.enter_city_address("Pune")
         self.ANC.enter_state_address("Maharashtra")
         self.ANC.enter_post_code("411057")
-        self.ANC.enter_country_address("India") #
+        self.ANC.enter_country_address("India")
         self.ANC.enter_phone_country("India")
         self.ANC.enter_phone_number("8888446392")
         self.ANC.enter_phone_type("Mobile")
         self.ANC.enter_email("info@nextpoint-tech.com")
         self.ANC.enter_email_type("Business")
-        #self.ANCT.enter_tag("technology")#Technology,Software Development,India,Innovation
+        self.ANC.enter_tag("technology") #Technology,Software Development,India,Innovation
         self.ANC.enter_description("NextPoint delivers innovative software solutions and IT consulting services. Based in Maharashtra, we help businesses thrive with cutting-edge technology")
         self.ANC.enter_social_channel() #linkedin
         self.ANC.enter_sc_link("linkedin.com/company/nextpoint-tech")##
@@ -41,7 +41,6 @@ class TestNewCompany:
         self.ANC.enter_identifier("NP-2024-001")
         self.ANC.upload_image("C:/Users/gaurav/Downloads/indian_flag.png")
         self.ANC.save_profile()
-        time.sleep(5)
         self.ANC.verify_company_created()
 
 
