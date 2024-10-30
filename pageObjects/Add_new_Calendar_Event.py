@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 class AddNewCalendar:
-    Hover_Calendar_xpath = (By.XPATH,"//span[normalize-space()='Calendar']")
+    Hover_Calendar_xpath = (By.XPATH, "//div[@class='menu-item-wrapper'][2]")
     Create_Calendar_xpath = (By.XPATH,"//div[@id='main-nav']//div[2]//button[1]//i[1]")
     End_date_label_xpath =(By.XPATH,"//label[normalize-space()='End Date']")
 
@@ -30,8 +30,8 @@ class AddNewCalendar:
     Category_Time_Off_xpath = (By.XPATH,"//div[@name='category']//div[8]")
     Category_Private_xpath = (By.XPATH,"//div[@name='category']//div[9]")
 
-    Tag_xpath = (By.XPATH,"/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/form[1]/div[3]/div[2]/div[1]/div[1]/input[1]")
-    Tag_Interview_xpath =(By.XPATH,"//span[normalize-space()='Interview Technical Round']")
+    Tag_xpath = (By.XPATH,"(//input[@class='search'])[1]")
+    Select_Tag_xpath =(By.XPATH,"//span[@class='text'][normalize-space()='team meeting']")
 
     Description_xpath = (By.XPATH,"//textarea[@name='description']")
 
@@ -40,13 +40,13 @@ class AddNewCalendar:
     All_Day_toggle_button_xpath = (By.XPATH,"//div[@class='ui toggle checkbox']//label[contains(text(),'All Day')]")
 
     Deal_xpath = (By.XPATH,"//div[@name='deal']//input[@type='text']")
-    Deal_Opportunity_xpath = (By.XPATH,"//div[@class='visible menu transition']//div[@role='option']")
+    Select_ActiveDeal_xpath = (By.XPATH,"//span[normalize-space()='Deal - Active']")
 
     Task_xpath = (By.XPATH,"//div[@name='task']//input[@type='text']")
-    Select_Task_xpath = (By.XPATH,"//span[contains(text(),'Schedule the interview and provide detailed feedba')]")
+    Select_Task_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='Team Meeting']")
 
     Case_xpath = (By.XPATH,"//div[@name='case']//input[@type='text']")
-    Select_Case_xpath = (By.XPATH,"//div[@name='case']//div[@role='listbox']//div[1]") #Descriptive
+    Select_Case_xpath = (By.XPATH,"//span[normalize-space()='Case Testing']")
 
     Alert_Before_xpath = (By.XPATH,"//div[@name='minutesBefore']")
     Select_Alert_xpath = (By.XPATH,"//div[@class='visible menu transition']//div[1]") #10 Min before
@@ -56,11 +56,11 @@ class AddNewCalendar:
 
     Reminder_Time_xpath = (By.XPATH,"//input[@name='reminder_minutes']") #15 Min
 
-    Participants_xpath = (By.XPATH,"//div[@name='participants'] //input[@aria-autocomplete='list']") #sr. manager
-    Select_Participants_xpath = (By.XPATH,"//span[normalize-space()='Sr. Manager']")
+    Participants_xpath = (By.XPATH,"//div[@name='participants'] //input[@aria-autocomplete='list']")
+    Select_Participants_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='Manager']")
 
     Company_xpath = (By.XPATH,"//div[@name='company'] //input[@aria-autocomplete='list']")
-    Select_Company_xpath = (By.XPATH,"//span[normalize-space()='NextPoint']")
+    Select_Company_xpath = (By.XPATH,"//div[@class='selected item addition']//span[@class='text']")
 
     Recurrence_xpath = (By.XPATH,"//a[normalize-space()='No recurrence. Click to set.']")
     Re_Interval_xpath = (By.XPATH,"//div[@name='freq']")
@@ -122,7 +122,7 @@ class AddNewCalendar:
 
     def enter_tag(self,tag):
         self.driver.find_element(*AddNewCalendar.Tag_xpath).send_keys(tag)
-        tag_option = WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(AddNewCalendar.Tag_Interview_xpath))
+        tag_option = WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(AddNewCalendar.Select_Tag_xpath))
         tag_option.click()
 
     def enter_description(self,desc):
@@ -133,7 +133,7 @@ class AddNewCalendar:
 
     def enter_deal(self,deal):
         self.driver.find_element(*AddNewCalendar.Deal_xpath).send_keys(deal)
-        deal_option = WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(AddNewCalendar.Deal_Opportunity_xpath))
+        deal_option = WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(AddNewCalendar.Select_ActiveDeal_xpath))
         deal_option.click()
 
     def enter_task(self,task):

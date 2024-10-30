@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 class AddNewContact:
-    Hover_Contacts_xpath = (By.XPATH,"//span[normalize-space()='Contacts']")
+    Hover_Contacts_xpath = (By.XPATH,"//div[@class='menu-item-wrapper'][3]")
     Create_Contacts_xpath = (By.XPATH,"// div[ @ id = 'main-nav'] // div[3] // button[1] // i[1]")
 
     Email_Label_xpath = (By.XPATH,"//label[normalize-space()='Email']")
@@ -14,11 +14,10 @@ class AddNewContact:
     Middle_Name_xpath = (By.XPATH,"//input[@name='middle_name']")
 
     Company_xpath = (By.XPATH,"//div[@name='company']//input[@type='text']")
-    Company_Automation_xpath = (By.XPATH,"//span[normalize-space()='Automation_testing']")
-    Company_NextPoint_xpath = (By.XPATH,"//span[normalize-space()='NextPoint']")
+    Select_Company_xpath = (By.XPATH,"//span[normalize-space()='NextPoint']")
 
-    Tag_xpath = (By.XPATH,"//div[@class='ui active visible fluid multiple search selection dropdown']")
-    Select_Tag_xpath = (By.XPATH,"//span[normalize-space()='First Phase']") #firstPhase
+    Tag_xpath = (By.XPATH,"//div[@class='ui fluid multiple search selection dropdown']//input[@type='text']")
+    Select_Tag_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='Automation']")
 
     Email_xpath = (By.XPATH,"//input[@placeholder='Email address']")
     Type_of_Email = (By.XPATH,"//input[@placeholder='Personal email, Business, Alt...']")
@@ -49,10 +48,6 @@ class AddNewContact:
     Enter_Social_Channel_link = (By.XPATH,"//div[@class='ui field'][.//label[normalize-space()='Social channels']]//div[@class='ui input']//input[@name='value']")
 
     Time_Zone_xpath = (By.XPATH,"//div[@name='timezone']//input[@type='text']")
-    Time_ZoneKabul_xpath = (By.XPATH,"//div[243]")
-    Time_ZoneKarachi_xpath = (By.XPATH,"//div[245]")
-    Time_ZoneKathmandu_xpath = (By.XPATH,"//div[246]")
-    Time_ZoneKhandyga_xpath = (By.XPATH,"//div[247]")
     Time_ZoneKolkata_xpath = (By.XPATH, "//span[normalize-space()='Asia/Kolkata']")
 
     Address_Street_xpath = (By.XPATH, "//input[@placeholder='Street Address']")
@@ -81,15 +76,13 @@ class AddNewContact:
     Department_xpath = (By.XPATH,"//input[@name='department']")
 
     Supervisor_xpath = (By.XPATH,"//div[@name='supervisor']//input[@type='text']")
-    Supervisor_Manager_xpath = (By.XPATH,"//div[@class='active item']")
-    Supervisor_HR_xpath = (By.XPATH,"//span[normalize-space()='HR Manager']")
+    Select_Supervison_xpath = (By.XPATH,"//span[normalize-space()='Sr Manager']")
 
     Assistant_xpath = (By.XPATH,"//div[@name='assistant']//input[@type='text']")
-    Assistant_Support_staff_xpath = (By.XPATH,"//span[normalize-space()='Support Staff']")
+    Select_Assistance_xpath = (By.XPATH,"//span[normalize-space()='L2 Lead']")
 
     Referred_by_xpath = (By.XPATH,"//div[@name='referred_by']//input[@type='text']")
-    Referred_by_Event_xpath = (By.XPATH,"//span[normalize-space()='Event']")
-    Referred_by_Friend_xpath = (By.XPATH,"//span[normalize-space()='Friend']")
+    Select_Referred_by_xpath = (By.XPATH,"//span[normalize-space()='Social Media']")
 
     Source_xpath = (By.XPATH,"//div[@name='source']//i[@class='dropdown icon']")
     Source_Website_xpath = (By.XPATH,"//div[@class='visible menu transition']//div[2]")
@@ -149,20 +142,13 @@ class AddNewContact:
 
     def enter_company(self,com):
         self.driver.find_element(*AddNewContact.Company_xpath).send_keys(com)
-        company = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Company_NextPoint_xpath))
+        company = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Select_Company_xpath))
         company.click()
-        #self.driver.find_element(*AddNewContact.Company_NextPoint_xpath).click()
 
     def enter_tag(self, tag):
         self.driver.find_element(*AddNewContact.Tag_xpath).send_keys(tag)
-        # tag_input = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(AddNewCompany.Tags_xpath))
-        # tag_input.send_keys(tag)
         tag_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Select_Tag_xpath))
         tag_option.click()
-
-    # def enter_tag(self,tag):
-    #     self.driver.find_element(*AddNewCompany.Tags_xpath).send_keys(tag)
-    #     self.driver.find_element(*AddNewCompany.Tag_Technology_xpath).click()
 
     def enter_email(self,email):
         self.driver.find_element(*AddNewContact.Email_xpath).send_keys(email)
@@ -188,12 +174,10 @@ class AddNewContact:
     def enter_sc_link(self,scl):
         self.driver.find_element(*AddNewContact.Enter_Social_Channel_link).send_keys(scl)
 
-    def enter_timezone(self):
-        self.driver.find_element(*AddNewContact.Time_Zone_xpath).click()
+    def select_timezone(self,timezone):
+        self.driver.find_element(*AddNewContact.Time_Zone_xpath).send_keys(timezone)
         kolkata_option = WebDriverWait(self.driver, 50).until(EC.element_to_be_clickable(AddNewContact.Time_ZoneKolkata_xpath))
         kolkata_option.click()
-        #self.driver.find_element(*AddNewContact.Time_ZoneKolkata_xpath).click()
-
     def enter_street_address(self,street):
         self.driver.find_element(*AddNewContact.Address_Street_xpath).send_keys(street)
 
@@ -228,19 +212,19 @@ class AddNewContact:
 
     def enter_supervisor(self,spv):
         self.driver.find_element(*AddNewContact.Supervisor_xpath).send_keys(spv)
-        manager_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Supervisor_HR_xpath))
+        manager_option = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(AddNewContact.Select_Supervison_xpath))
         manager_option.click()
         #self.driver.find_element(*AddNewContact.Supervisor_Manager_xpath).click()
 
     def enter_assistant(self,ast):
         self.driver.find_element(*AddNewContact.Assistant_xpath).send_keys(ast)
-        support_staff_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Assistant_Support_staff_xpath))
+        support_staff_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Select_Assistance_xpath))
         support_staff_option.click()
         #self.driver.find_element(*AddNewContact.Assistant_Support_staff_xpath).click()
 
     def enter_referred_by(self,ref):
         self.driver.find_element(*AddNewContact.Referred_by_xpath).send_keys(ref)
-        friend_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Referred_by_Friend_xpath))
+        friend_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewContact.Select_Referred_by_xpath))
         friend_option.click()
         #self.driver.find_element(*AddNewContact.Referred_by_Friend_xpath).click()
 

@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -5,7 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class AddNewCompany:
-    Hover_Companies_xpath = (By.XPATH,"//span[normalize-space()='Companies']")
+    # Hover_Companies_xpath = (By.XPATH,"//span[normalize-space()='Companies']")
+    Hover_Companies_xpath = (By.XPATH, "//div[@class='menu-item-wrapper'][4]")
     Create_Company_xpath = (By.XPATH,"/html[1]/body[1]/div[1]/div[1]/div[1]/div[4]/button[1]/i[1]")
     Phone_label_xpath =(By.XPATH,"//label[normalize-space()='Phone']")
 
@@ -39,7 +42,7 @@ class AddNewCompany:
     Type_of_Email_xpath = (By.XPATH,"//input[@placeholder='Personal email, Business, Alt...']") #Personal,business
 
     Tags_xpath = (By.XPATH,"//div[@class='ui fluid multiple search selection dropdown']//input[@type='text']")
-    Tag_Technology_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='technology']")
+    Tag_Technology_xpath = (By.XPATH,"(//span[normalize-space()='technology'])[2]")
     Tag_Software_development_xpath = (By.XPATH,"//span[normalize-space()='Software Development']")
     Tag_India_xpath = (By.XPATH,"//span[normalize-space()='India']")
     Tag_Automation_xpath = (By.XPATH,"//span[normalize-space()='Automation']")
@@ -110,12 +113,12 @@ class AddNewCompany:
         self.driver = driver
 
     def hover_and_click_add_new_company(self):
-        hover_on_companies_element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(AddNewCompany.Hover_Companies_xpath))
+        hover_on_companies_element = WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(AddNewCompany.Hover_Companies_xpath))
         action = ActionChains(self.driver)
         action.move_to_element(hover_on_companies_element).perform()
-        add_button = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewCompany.Create_Company_xpath))
+        add_button = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(AddNewCompany.Create_Company_xpath))
         add_button.click()
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewCompany.Phone_label_xpath)).click()
+        WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(AddNewCompany.Phone_label_xpath)).click()
 
     def enter_name(self,name):
         self.driver.find_element(*AddNewCompany.Name_xpath).send_keys(name)
@@ -157,7 +160,8 @@ class AddNewCompany:
 
     def enter_tag(self, tag):
         self.driver.find_element(*AddNewCompany.Tags_xpath).send_keys(tag)
-        tag_option = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(AddNewCompany.Tag_Technology_xpath))
+        time.sleep(2)
+        tag_option = WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(AddNewCompany.Tag_Technology_xpath))
         tag_option.click()
 
     def enter_description(self,desc):

@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 class AddNewCalls:
-    Hover_Calls_xpath = (By.XPATH,"//span[normalize-space()='Calls']")
+    Hover_Calls_xpath = (By.XPATH,"//div[@class='menu-item-wrapper'][8]")
     Create_Calls_xpath = (By.XPATH,"//div[@id='main-nav']//div[8]//button[1]//i[1]")
     CallScript_label_xpath = (By.XPATH,"//label[normalize-space()='Call Script']")
 
@@ -28,21 +28,21 @@ class AddNewCalls:
     Select_Flat_xpath = (By.XPATH,"//span[contains(text(),'Important')]")
 
     Tag_xpath = (By.XPATH, "(//input[@class='search'])[2]")
-    Select_Tag_xpath = (By.XPATH, "(//span[normalize-space()='business'])[2]")
+    Select_Tag_xpath = (By.XPATH, "//span[@class='text'][normalize-space()='business']")
 
     Description_xpath = (By.XPATH,"//textarea[@name='description']")
 
     Participants_xpath = (By.XPATH,'//*[@id="main-content"]/div/div[2]/form/div[5]/div[2]/div/div/input')
-    Select_Participants_xpath = (By.XPATH,"//div[@model_type='contact']") #nextpoint
+    Select_Participants_xpath = (By.XPATH,"//span[normalize-space()='NextPoint [Mobile +918888446392]']") #nextpoint
 
     Deal_xpath = (By.XPATH, "//div[@name='deal']//input[@type='text']")
-    Select_Deal_xpath = (By.XPATH, "//span[contains(text(),'Testing Deal 02 - Inactive')]")
+    Select_Deal_xpath = (By.XPATH, "//span[normalize-space()='Deal - New']")
 
     Case_xpath = (By.XPATH,"//div[@name='case']//input[@type='text']")
-    Select_Case_xpath = (By.XPATH,"//span[normalize-space()='Case Testing - 01']")
+    Select_Case_xpath = (By.XPATH,"//span[normalize-space()='Case Testing - 2']")
 
     Task_xpath = (By.XPATH,"//div[@name='task']//input[@type='text']")
-    Select_Task_xpath = (By.XPATH,"//span[normalize-space()='Team Meeting']")
+    Select_Task_xpath = (By.XPATH,"//span[normalize-space()='WCC - Session']")
 
     Conference_Call_Number_Country_xpath = (By.XPATH,"//div[@name='hint']//input[@type='text']")
     India_xpath = (By.XPATH,"//div[@class='visible menu transition']//span[@class='text'][normalize-space()='India']")

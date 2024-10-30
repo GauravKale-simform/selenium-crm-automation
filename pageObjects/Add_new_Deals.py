@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 class AddNewDeals:
-    Hover_Deals_xpath = (By.XPATH,"//span[normalize-space()='Deals']")
+    Hover_Deals_xpath = (By.XPATH,"//div[@class='menu-item-wrapper'][5]")
     Create_Deals_xpath = (By.XPATH,"//div[@id='main-nav']//div[5]//button[1]//i[1]")
     Contacts_label_xpath = (By.XPATH,"//label[normalize-space()='Contacts']")
 
@@ -14,20 +14,20 @@ class AddNewDeals:
     Select_Assigned_xpath = (By.XPATH,"(//span[@class='text'][normalize-space()='Guarav Kale'])[2]")
 
     Company_xpath = (By.XPATH,"//div[@name='company']//input[@type='text']")
-    Select_Company_xpath = (By.XPATH,"//div[@name='company']//div[@role='listbox']//div[2]") #Next Point
+    Select_Company_xpath = (By.XPATH,"//span[normalize-space()='NextPoint']") #Next Point
 
     Products_xpath = (By.XPATH,"//div[@name='products']//input[@type='text']")
-    Select_Products_xpath = (By.XPATH,"//div[@name='products']//div[2]") # Product C
+    Select_Products_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='Product A']")
 
     Contacts_xpath = (By.XPATH,"//div[@name='contacts']//input[@type='text']")
-    Select_Contacts_xpath = (By.XPATH,"//span[@class='text'][contains(text(),'Sean')]") #Sean Paul
+    Select_Contacts_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='Rajesh Kumar']") #Sean Paul
 
     Close_Date_xpath = (By.XPATH,"//input[@class='calendarField']")
     Select_Close_Date_xpath = (By.XPATH,"//div[@aria-label='Choose Thursday, 17 October 2024']")
     Select_Close_Time_xpath = (By.XPATH,"//li[normalize-space()='18:00']")
 
     Tag_xpath = (By.XPATH,"(//input[@class='search'])[4]")
-    Select_Tag_xpath = (By.XPATH,"//span[normalize-space()='technology']")
+    Select_Tag_xpath = (By.XPATH,"//span[@class='text'][normalize-space()='business']")
 
     Description_xpath = (By.XPATH,"//textarea[@name='description']")
 
@@ -100,7 +100,7 @@ class AddNewDeals:
 
     def select_tag(self,tag):
         self.driver.find_element(*AddNewDeals.Tag_xpath).send_keys(tag)
-        select_tag = WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(AddNewDeals.Select_Tag_xpath))
+        select_tag = WebDriverWait(self.driver,20).until(EC.element_to_be_clickable(AddNewDeals.Select_Tag_xpath))
         select_tag.click()
 
     def enter_description(self,desc):

@@ -1,14 +1,19 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from pageObjects.Login_Page import Login
+from utilities.logger import logGen
+
+logger = logGen.logger()
 
 class TestLogin:
     def test_login_valid(self,setup):
         self.driver = setup
         self.lp = Login(self.driver)
+        logger.info("Starting valid login test")
         self.lp.enter_email('gauravkale.sinhgad@gmail.com')
+        logger.info("Entering Email")
         self.lp.enter_password('Royal@12345')
+        logger.info("Entering Password")
         self.lp.click_login_button()
+        logger.info("Clicking on login button")
         self.driver.implicitly_wait(10)
         if self.lp.page_title_displayed():
             print("Login successful")

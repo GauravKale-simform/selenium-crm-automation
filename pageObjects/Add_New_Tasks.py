@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class AddNewTask:
-    Hover_Tasks_xpath = (By.XPATH,"//span[normalize-space()='Tasks']")
+    Hover_Tasks_xpath = (By.XPATH,"//div[@class='menu-item-wrapper'][6]")
     Create_Tasks_xpath = (By.XPATH,"//div[@id='main-nav']//div[6]//button[1]//i[1]")
     Contact_label_xpath = (By.XPATH,"//label[normalize-space()='Type']")
 
@@ -22,23 +22,23 @@ class AddNewTask:
     Select_Due_Time_xpath = (By.XPATH,"//li[normalize-space()='18:00']")
 
     Contacts_xpath = (By.XPATH,"//div[@name='contact']//input[@type='text']")
-    Select_Contacts_xpath = (By.XPATH,"//span[@class='text'][contains(text(),'Ramesh')]") #Ramesh
+    Select_Contacts_xpath = (By.XPATH,"//div[@class='selected item']//span[@class='text'][normalize-space()='Abhishek Radha Sen']") #Ramesh
 
     Company_xpath = (By.XPATH,"//div[@name='company']//input[@type='text']")
-    Select_Company_xpath = (By.XPATH,"//div[@name='company']//div[@role='listbox']//div[2]") #Testing your source
+    Select_Company_xpath = (By.XPATH,"//span[normalize-space()='Testing Your Source']")
 
     Deal_xpath = (By.XPATH,"(//input[@class='search'])[3]")
-    Select_Deal_xpath = (By.XPATH,"//span[contains(text(),'Testing Deal 01 - New')]")
+    Select_Deal_xpath = (By.XPATH,"//span[normalize-space()='Deal - Inactive']")
 
     Case_xpath = (By.XPATH,"(//input[@class='search'])[4]")
-    Select_Case_xpath = (By.XPATH,"//span[normalize-space()='Case Testing - 2']")
+    Select_Case_xpath = (By.XPATH,"//span[normalize-space()='Case Testing - 1']")
 
     Close_Date_xpath = (By.XPATH,"(//input[@class='calendarField'])[2]")
     Select_Close_Date_xpath = (By.XPATH,"//div[@aria-label='Choose Monday, 21 October 2024']") #21 Oct
     Select_Close_Time_xpath = (By.XPATH,"//li[normalize-space()='18:00']")
 
     Tag_xpath = (By.XPATH,"(//input[@class='search'])[5]")
-    Select_Tag_xpath = (By.XPATH,"(//span[normalize-space()='technology'])[2]")
+    Select_Tag_xpath = (By.XPATH,"/html/body/div[1]/div/div[2]/div[2]/div/div[2]/form/div[6]/div[1]/div/div/div/div/span")
 
     Description_xpath = (By.XPATH, "//textarea[@name='description']")
 

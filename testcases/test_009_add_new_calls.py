@@ -21,17 +21,16 @@ class TestAddNewCalls:
         self.ANC.enter_tag('business')
         self.ANC.enter_description('This is testing of description')
         self.ANC.scroll_down()
-        self.ANC.enter_participants('Rajesh')
-        self.ANC.enter_deal('Testing')
-        self.ANC.enter_case('Case Testing')
-        self.ANC.enter_task('Team meeting')
+        self.ANC.enter_participants('NextPoint')
+        self.ANC.enter_deal('Deal - New')
+        self.ANC.enter_case('Case Testing - 2')
+        self.ANC.enter_task('WCC - Session')
         self.ANC.select_country()
         self.ANC.enter_phone_number('7820062006')
         self.ANC.enter_type_phone('Work')
         self.ANC.enter_identifier('This is a testing of identifier')
         self.ANC.save_task()
         self.ANC.verify_new_deal_created()
-        time.sleep(1000)
 
 
 

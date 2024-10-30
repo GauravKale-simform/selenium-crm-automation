@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 class AddNewDocument:
-    Hover_Documents_xpath = (By.XPATH,"(//span[normalize-space()='Documents'])[1]")
+    Hover_Documents_xpath = (By.XPATH,"//div[@class='menu-item-wrapper'][9]")
     Create_Documents_xpath = (By.XPATH,"//div[@id='main-nav']//div[9]//button[1]//i[1]")
     Tags_label_xpath = (By.XPATH,"//label[normalize-space()='Tags']")
 
@@ -19,19 +19,19 @@ class AddNewDocument:
     File_xpath = (By.XPATH,"//input[@name='file']")
 
     Contact_xpath = (By.XPATH,"(//input[@class='search'])[3]")
-    Select_Contact_xpath = (By.XPATH,"//span[normalize-space()='Sean Paul']")
+    Select_Contact_xpath = (By.XPATH,"//span[normalize-space()='Rajesh Kumar']")
 
     Company_xpath = (By.XPATH, "//div[@name='company']//input[@type='text']")
-    Select_Company_xpath = (By.XPATH, "//div[@name='company']//div[@role='listbox']//div[2]")
+    Select_Company_xpath = (By.XPATH, "//span[normalize-space()='NextPoint']")
 
     Deal_xpath = (By.XPATH, "(//input[@class='search'])[5]")
-    Select_Deal_xpath = (By.XPATH, "//span[contains(text(),'Testing Deal 03 - Active')]")
+    Select_Deal_xpath = (By.XPATH, "//span[normalize-space()='Deal - Active']")
 
     Case_xpath = (By.XPATH,"//div[@name='case']//input[@type='text']")
-    Select_Case_xpath = (By.XPATH,"//span[normalize-space()='Case Testing - 01']")
+    Select_Case_xpath = (By.XPATH,"//span[normalize-space()='Case Testing - 2']")
 
     Task_xpath = (By.XPATH,"//div[@name='task']//input[@type='text']")
-    Select_Task_xpath = (By.XPATH,"//span[normalize-space()='WCC - Session']")
+    Select_Task_xpath = (By.XPATH,"//span[normalize-space()='Requirements Gathering']")
 
     Identifier_xpath = (By.XPATH,"//input[@name='identifier']")
 

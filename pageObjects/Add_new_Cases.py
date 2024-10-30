@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 class AddNewCases:
-    Hover_Cases_xpath = (By.XPATH,"//span[normalize-space()='Cases']")
+    Hover_Cases_xpath = (By.XPATH,"//div[@class='menu-item-wrapper'][6]")
     Create_Cases_xpath = (By.XPATH,"//div[@id='main-nav']//div[7]//button[1]//i[1]")
     Contact_label_xpath = (By.XPATH,"//label[normalize-space()='Contact']")
 
@@ -14,13 +14,13 @@ class AddNewCases:
     Select_Assigned_xpath = (By.XPATH,"(//span[@class='text'][normalize-space()='Guarav Kale'])[2]")
 
     Contact_xpath = (By.XPATH,"(//input[@class='search'])[1]")
-    Select_Contact_xpath = (By.XPATH,"//span[normalize-space()='Rajesh Kumar Deshmukh']") #Rajesh Kumar Deshmukh
+    Select_Contact_xpath = (By.XPATH,"//span[normalize-space()='Rajesh Kumar']") #Rajesh Kumar Deshmukh
 
     Company_xpath = (By.XPATH, "//div[@name='company']//input[@type='text']")
     Select_Company_xpath = (By.XPATH, "//div[@name='company']//div[@role='listbox']//div[2]")
 
     Deal_xpath = (By.XPATH, "(//input[@class='search'])[3]")
-    Select_Deal_xpath = (By.XPATH, "//span[contains(text(),'Testing Deal 02 - Inactive')]")
+    Select_Deal_xpath = (By.XPATH, "//span[contains(text(),'Deal - Inactive')]")
 
     Type_xpath = (By.XPATH, "(//div[@name='type'])[1]")
     Select_Type_xpath = (By.XPATH, "//span[normalize-space()='Business Support']")

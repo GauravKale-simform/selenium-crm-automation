@@ -2,6 +2,8 @@
 #     for j in range(i):
 #         print('*',end=' ')
 #     print()
+from functools import reduce
+
 from Practice.practice import count
 
 # for i in range(1,6):
@@ -76,8 +78,36 @@ from Practice.practice import count
 #     count1 = a.count(i)
 #     print(i,count1)
 
+# a = 'babajaajahagavagfcaaaaimdjjjnncncmcmc'
+# b = ['a','b','j','n','m']
+#
+# for i in b:
+#     count1 = a.count(i)
+#     print(f'letter {i} has occured {count1} times')
+
+# sum1 = lambda x,y : x+y
+# print(reduce(sum1,(range(1,51))))
+
+# num = [2,4,5,6]
+# square = map(lambda x : x ** 2 ,num)
+# print(list(square))
+# square = []
+# for i in num:
+#     result = i * i
+#     square.append(result)
+# print(square)
+
+# num = list(range(1,51))
+# even_num = filter(lambda x : x % 2 == 1,num)
+# print(list(even_num))
+
+# a = [9,15,63,14]
+# sum = reduce(lambda x,y : x+y ,a)
+# print((sum))
 
 
+a = 'he my name is simform'
+for
 
 
 
